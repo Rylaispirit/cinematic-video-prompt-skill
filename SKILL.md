@@ -1,6 +1,6 @@
 ---
 name: cinematic-video-prompt
-description: Dùng khi viết hoặc sửa prompt tạo video/ảnh AI (Veo 3, Google Flow, Kling, Runway, Sora, Midjourney, Hailuo, Luma): từ vựng chuẩn về góc máy, chuyển động camera, ánh sáng, bố cục, phong cách, màu, cảm xúc và công thức ghép prompt. Use when writing or fixing AI video/image prompts — cinematic camera angles, camera movement, lighting, composition, style, color grading, mood and a prompt formula.
+description: Dùng khi viết hoặc sửa prompt tạo video/ảnh AI (Veo 3, Google Flow, Kling, Runway, Sora, Midjourney, Hailuo, Luma): từ vựng chuẩn về góc máy, chuyển động camera, ánh sáng, bố cục, phong cách, màu, cảm xúc công thức ghép prompt, và bài học thực chiến về lỗi model AI hay gặp. Use when writing or fixing AI video/image prompts — cinematic camera angles, camera movement, lighting, composition, style, color grading, mood, a prompt formula, and real-world lessons on common AI video model failures.
 ---
 
 # Cinematic Video Prompt — skill bổ trợ tạo video/ảnh AI
@@ -15,6 +15,7 @@ Cần tra sâu hơn (700+ thuật ngữ có giải thích): xem thư mục `refe
 2. Ghép prompt theo công thức mục 2. Mỗi khối chọn **1–2 từ khóa**, không nhồi.
 3. Kiểm tra bằng checklist mục 6 rồi mới đưa prompt.
 4. Nếu người dùng chỉ đưa ý tưởng mơ hồ ("cảnh buồn buồn", "cho ngầu hơn"), tra mục 5 (cảm xúc → combo) để đề xuất.
+5. Trước khi viết prompt phức tạp (nhiều nhịp, loài vật lạ, sự kiện, cảm xúc dồn), đọc lại mục 8 — những điều model AI hay làm sai.
 
 ## 2. Công thức ghép prompt
 
@@ -203,6 +204,11 @@ matte · glossy · brushed metal · chrome · polished wood · aged wood grain �
 - [ ] Tối đa ~8 từ khóa kỹ thuật; bỏ từ trùng nghĩa?
 - [ ] Tỷ lệ khung hình phù hợp nền tảng (9:16 dọc / 16:9 ngang)?
 - [ ] Video truyện: mô tả nhân vật giống hệt các clip trước?
+- [ ] Clip nhiều nhịp: đã chia khối theo mốc giây và giữ **≤3–5 nhịp**? (mục 8.1, 8.3)
+- [ ] Muốn liền mạch → có ghi `single continuous shot, no cuts`? Muốn cắt → có ghi rõ **số shot** + tổng giây? (mục 8.2)
+- [ ] Loài vật / vật thể / phong cách lạ: đã **tả từng bộ phận**, không chỉ gọi tên? (mục 8.7)
+- [ ] Cảm xúc mạnh: có viết thành **chuỗi nhịp theo thứ tự** + câu cấm để model khỏi diễn quá tay? (mục 8.6)
+- [ ] Cần hình sạch: đã ghi `no subtitles, no on-screen text, no watermark`? (mục 8.9)
 - [ ] Cần negative prompt (nếu tool hỗ trợ): `blurry, distorted face, extra fingers, text, watermark, low quality`?
 
 ## 7. Định dạng trả lời
@@ -211,3 +217,49 @@ Khi được nhờ viết prompt, trả về:
 1. **Prompt tiếng Anh** trong code block (copy được ngay).
 2. Một dòng tiếng Việt giải thích các lựa chọn chính (góc máy, ánh sáng, chuyển động → tạo cảm giác gì).
 3. Nếu là chuỗi clip: đánh số từng clip, ghi rõ khối nào giữ nguyên (nhân vật, style, màu) và khối nào đổi (hành động, camera).
+
+## 8. Bài học thực chiến — điều model AI hay làm sai (và cách chống)
+
+Đây là những điều rút ra khi **xem video kết quả** đặt cạnh prompt gốc (đối chiếu ~1100 prompt + 65 video mẫu của các model video AI đời mới: Seedance, Veo, Kling, Sora...). Mức độ khác nhau tùy model, nhưng hầu hết đúng chung. Cứ gen thử 1 clip ngắn để kiểm trước khi làm hàng loạt.
+
+### Cấu trúc prompt
+
+**8.1 — Chia khối theo mốc giây là cách bám kịch bản tốt nhất.** Với clip có nhiều nhịp, viết theo mốc giây, mỗi khối ghi: cỡ cảnh + hành động + biểu cảm (+ âm thanh nếu tool tự sinh tiếng). Model lệch khoảng 1–3 giây, chấp nhận được. Khuôn cho clip 10 giây:
+```
+{STYLE}. {CHARACTER}.
+0-4s: <shot size + angle>, <hành động 1>, <chuyển động nền: gió / cánh hoa / tàn lửa>.
+4-10s: <hành động 2 hoặc reveal>, camera <1 chuyển động>.
+No subtitles, no on-screen text, no watermark.
+```
+
+**8.2 — Muốn mấy shot thì ghi rõ SỐ shot + tổng giây.** `8 hard-cut shots, total 20s` ra đúng 8 shot đúng thứ tự. Ngược lại, muốn một cú máy liền mạch thì phải ghi thẳng `single continuous shot, no cuts` — nếu không, tả kiểu "máy đi qua cửa rồi kéo lên" dễ bị model tự cắt thành nhiều shot.
+
+**8.3 — Đừng nhồi.** Danh sách 11 món model chỉ hiện 4–5; 9 cảnh trong 18 giây thì rớt mất cảnh. Clip 10 giây: **tối đa 3–5 nhịp**. Muốn nhiều hơn → tách clip.
+
+**8.4 — Thông số kỹ thuật bằng số thường bị bỏ qua.** Ghi "24 seconds" ra 30 giây; ghi "no slow motion" vẫn có đoạn gần như đứng hình. Đừng tốn chữ vào mấy con số này. **Ngoại lệ có ích:** ghi **giờ cụ thể trong ngày** ("3:40 PM–4:10 PM") giúp giữ ánh sáng đều qua nhiều shot.
+
+### Nhân vật & cảm xúc
+
+**8.5 — Mặt nhân vật hay "trôi" khi đổi bối cảnh hoặc đổi ánh sáng.** Đây là lỗi phổ biến nhất. Cách chống: **mỗi clip một bối cảnh**, nhắc lại khối mô tả ngoại hình trong từng clip, hoặc dùng ảnh tham chiếu (nếu tool hỗ trợ).
+
+**8.6 — Cận mặt diễn cảm xúc là điểm mạnh, nhưng model hay đẩy quá tay.** Viết cảm xúc thành **chuỗi nhịp theo thứ tự** (ngỡ ngàng → ngấn lệ → một giọt rơi → cười nhẹ) thì diễn đúng trình tự. Nhưng ghi "ngấn lệ mà cố không cho rơi" thì model vẫn có thể cho khóc rồi cười toe. Muốn kìm phải ghi **câu cấm cụ thể**: `tears stay in her eyes and never fall, no crying, no clapping, no smiling`.
+
+**8.7 — Chữ không giữ được loài vật, giải phẫu, hay phong cách lạ.** Ghi "gecko" ra như con cóc; "black dragon" ra con trăn. Muốn đúng hình phải **tả từng bộ phận** (rồng: sừng hươu, râu dài, thân rắn có vảy, bốn chân có vuốt) hoặc dùng ảnh tham chiếu. Con ngươi dọc, hoa "có mặt người"... đều phải tả rõ, đừng gọi tên rồi tin.
+
+### Phong cách, chữ, sự kiện
+
+**8.8 — Phong cách khai báo một lần sẽ trôi khi gặp chủ thể lạ.** Cảnh hiện đại chèn vào giữa clip cổ trang dễ bị trôi sang kiểu khác. **Nhắc lại phong cách trong từng khối quan trọng.** Danh sách `NOT... / NO...` viết hoa giúp kéo model ra khỏi kiểu ảnh thật khi muốn phong cách vẽ.
+
+**8.9 — Chữ trên hình gần như không tin được.** Chữ ngắn trong ngoặc kép ("SALE") thì OK, kể cả tiếng Trung; nhưng slogan dài, biển hiệu neon, chữ tiếng Nhật → toàn chữ giả, model tự viết lại. **Tiêu đề, phụ đề, chữ Hán karaoke làm ở hậu kỳ.** Cần hình sạch thì ghi `no subtitles, no captions, no on-screen text`.
+
+**8.10 — Sự kiện (kinh dị, hành động) phải chỉ rõ VỊ TRÍ + THỜI ĐIỂM + KẾT QUẢ nhìn thấy được.** Prompt một câu "cửa tự mở, máy trôi vào bóng tối" ra đúng không khí nhưng cửa gần như không mở. Viết kiểu: `at 4s the second door on the left swings fully open, revealing pitch darkness`. Và luôn viết điều mình **muốn thấy**, thay vì chỉ viết điều cấm ("không thấy dầu" hay bị bỏ qua).
+
+**8.11 — Cú máy dài liền mạch làm rất đẹp nếu tả theo lộ trình.** Từng chặng bằng động từ cụ thể + luật "một chiều, không quay lại". Hợp cho đoạn mở MV sơn thủy, cảnh chuyển. Khuôn flycam:
+```
+First-person FPV drone, single continuous shot without cuts, always flying forward, never turning back.
+Route: <chặng 1 + động từ> → <chặng 2> → <chặng 3, điểm kết>.
+<giờ cụ thể trong ngày>. Negative: no cuts, no black frames, no people looking at camera.
+```
+
+### Bản quyền
+Đừng gọi thẳng tên phim / game / studio / nhân vật có bản quyền trong prompt (dễ bị model trượt về hình giống IP đó, và rủi ro pháp lý). Làm MV fan-made hay phim truyện thì **tả thiết kế của riêng mình**.

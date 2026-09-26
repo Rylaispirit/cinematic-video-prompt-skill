@@ -20,7 +20,7 @@ It is model-agnostic: the vocabulary works for **Veo 3 / Google Flow, Kling, Sor
 
 | File | Content |
 |---|---|
-| `SKILL.md` | The skill itself: workflow, **prompt formula**, condensed keyword tables, **ready-made combos by video type**, mood → combo lookup, pre-flight checklist |
+| `SKILL.md` | The skill itself: workflow, **prompt formula**, condensed keyword tables, **ready-made combos by video type**, mood → combo lookup, pre-flight checklist, **real-world lessons** on what AI video models commonly get wrong (section 8) |
 | `references/01-camera-angles-and-movement.md` | 70+ camera angles & shot sizes, 60+ camera movements (dolly, arc, crane, FPV drone, dolly zoom, bullet time…) with "when to use" |
 | `references/02-lighting.md` | 80+ lighting terms (golden hour, rim light, Rembrandt, chiaroscuro, volumetric, practical, neon…) |
 | `references/03-composition.md` | 80+ composition rules (rule of thirds, leading lines, S-curve, negative space, repoussoir…) |
@@ -101,7 +101,7 @@ Dùng được cho mọi model tạo video/ảnh đọc prompt tiếng Anh: **Ve
 
 ### Có gì bên trong?
 
-- **`SKILL.md`** — phần AI đọc: quy trình làm việc, **công thức ghép prompt**, bảng từ khóa rút gọn theo 11 nhóm, **combo sẵn theo loại video** (video kể truyện, kinh dị, cổ trang/tu tiên, sản phẩm, ẩm thực, đào tạo talking head, đường phố đêm, du lịch, hành động, Reels dọc), bảng **cảm xúc → combo**, checklist trước khi đưa prompt.
+- **`SKILL.md`** — phần AI đọc: quy trình làm việc, **công thức ghép prompt**, bảng từ khóa rút gọn theo 11 nhóm, **combo sẵn theo loại video** (video kể truyện, kinh dị, cổ trang/tu tiên, sản phẩm, ẩm thực, đào tạo talking head, đường phố đêm, du lịch, hành động, Reels dọc), bảng **cảm xúc → combo**, checklist trước khi đưa prompt, và **bài học thực chiến** về những lỗi model AI hay mắc (mục 8).
 - **`references/`** — bộ tham chiếu đầy đủ 700+ thuật ngữ, mỗi thuật ngữ có giải thích tiếng Việt dễ hiểu và gợi ý khi nào dùng: góc máy & chuyển động camera, ánh sáng, bố cục, ống kính & chất phim, phong cách & màu & cảm xúc, chất liệu & thời tiết & tư thế.
 - **`examples/`** — ví dụ prompt hoàn chỉnh cho các loại video hay gặp.
 
