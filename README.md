@@ -28,6 +28,8 @@ It is model-agnostic: the vocabulary works for **Veo 3 / Google Flow, Kling, Sor
 | `references/05-style-color-mood.md` | 100+ art styles, 80+ color palettes/grading, 100+ mood/emotion terms |
 | `references/06-materials-weather-pose.md` | Materials & textures, weather & atmosphere, character poses |
 | `examples/` | Worked prompt examples for common video types |
+| `bonus-skills/character-sheet-lite/` | **Bonus skill:** character reference sheet prompts (3 full-body views + close-up in one image) to keep characters consistent across clips |
+| `bonus-skills/oriental-scene-lite/` | **Bonus skill:** Oriental / xianxia / Chinese-fantasy scene prompts (celestial palaces, sea of clouds, swordsmen) |
 
 ### The prompt formula
 
@@ -60,6 +62,17 @@ Or per-project: clone into `.claude/skills/cinematic-video-prompt` inside your r
 **Claude.ai / Cowork**
 
 Zip the folder (`SKILL.md` must be at the root of the zip) and upload it under *Settings → Capabilities → Skills*.
+
+**Bonus skills (Lite)**
+
+Each folder in `bonus-skills/` is a separate skill. Copy it into your skills folder, e.g.:
+
+```bash
+cp -r bonus-skills/character-sheet-lite ~/.claude/skills/
+cp -r bonus-skills/oriental-scene-lite ~/.claude/skills/
+```
+
+For Claude.ai / Cowork, zip each folder on its own (its `SKILL.md` at the zip root) and upload. Full (VIP) versions with the complete guides, lookup tables and scene library are available from the author — contact [@Rylaispirit](https://github.com/Rylaispirit).
 
 **Any other AI tool (ChatGPT, Gemini, local LLM)**
 
@@ -104,6 +117,9 @@ Dùng được cho mọi model tạo video/ảnh đọc prompt tiếng Anh: **Ve
 - **`SKILL.md`** — phần AI đọc: quy trình làm việc, **công thức ghép prompt**, bảng từ khóa rút gọn theo 11 nhóm, **combo sẵn theo loại video** (video kể truyện, kinh dị, cổ trang/tu tiên, sản phẩm, ẩm thực, đào tạo talking head, đường phố đêm, du lịch, hành động, Reels dọc), bảng **cảm xúc → combo**, checklist trước khi đưa prompt, và **bài học thực chiến** về những lỗi model AI hay mắc (mục 8).
 - **`references/`** — bộ tham chiếu đầy đủ 700+ thuật ngữ, mỗi thuật ngữ có giải thích tiếng Việt dễ hiểu và gợi ý khi nào dùng: góc máy & chuyển động camera, ánh sáng, bố cục, ống kính & chất phim, phong cách & màu & cảm xúc, chất liệu & thời tiết & tư thế.
 - **`examples/`** — ví dụ prompt hoàn chỉnh cho các loại video hay gặp.
+- **`bonus-skills/`** — 2 skill tặng kèm (bản Lite):
+  - `character-sheet-lite` — prompt bảng thiết kế nhân vật (3 góc toàn thân + cận mặt trong 1 ảnh) để giữ nhân vật nhất quán giữa các clip.
+  - `oriental-scene-lite` — prompt cảnh mỹ học phương Đông / tiên hiệp (thiên cung, biển mây, kiếm khách).
 
 ### Cài đặt
 
@@ -116,6 +132,15 @@ git clone https://github.com/Rylaispirit/cinematic-video-prompt-skill.git ~/.cla
 (hoặc clone vào `.claude/skills/cinematic-video-prompt` trong thư mục dự án). Sau đó chỉ cần nói: *"viết prompt Veo 3 cảnh phố đêm mưa"* — skill tự bật.
 
 **Claude.ai / Cowork** — nén thư mục thành file zip (file `SKILL.md` phải nằm ngay gốc zip), vào *Settings → Capabilities → Skills* và tải lên.
+
+**Skill tặng kèm (Lite)** — mỗi thư mục trong `bonus-skills/` là một skill riêng. Copy vào thư mục skills, ví dụ:
+
+```bash
+cp -r bonus-skills/character-sheet-lite ~/.claude/skills/
+cp -r bonus-skills/oriental-scene-lite ~/.claude/skills/
+```
+
+Với Claude.ai / Cowork: nén riêng từng thư mục thành zip (file `SKILL.md` nằm ngay gốc zip) rồi tải lên. **Bản Full (VIP)** có đầy đủ hướng dẫn chuyên sâu, bảng tra và kho cảnh mẫu — liên hệ tác giả qua GitHub [@Rylaispirit](https://github.com/Rylaispirit).
 
 **ChatGPT / Gemini / tool khác** — dán nội dung `SKILL.md` vào system prompt hoặc custom instruction. Khi cần tra sâu thì dán thêm file trong `references/`.
 
@@ -145,4 +170,4 @@ MIT — dùng, sửa, chia sẻ tự do.
 
 ---
 
-*Keywords: AI video prompt, cinematic prompt, Veo 3 prompt, Kling prompt, Sora prompt, Runway prompt, text to video prompt guide, camera movement prompts, lighting prompts, prompt engineering for video, Claude skill, prompt tạo video AI, prompt Veo 3, prompt Kling, từ điển prompt điện ảnh, hướng dẫn prompt video AI.*
+*Keywords: AI video prompt, cinematic prompt, Veo 3 prompt, Kling prompt, Sora prompt, Runway prompt, text to video prompt guide, camera movement prompts, lighting prompts, prompt engineering for video, Claude skill, prompt tạo video AI, prompt Veo 3, prompt Kling, character sheet prompt, character consistency, xianxia prompt, Chinese fantasy prompt, prompt tiên hiệp, prompt nhân vật nhất quán, từ điển prompt điện ảnh, hướng dẫn prompt video AI.*
